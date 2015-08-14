@@ -6,6 +6,9 @@ vim etpl syntax
 
 * 颜色调整
 * 参数高亮
+* snippets
+* key binding
+* matchit
 * ...
 
 ## 示例
