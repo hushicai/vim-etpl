@@ -4,12 +4,51 @@ priority -50
 
 extends html
 
-snippet ed "etpl delim" w
-<!-- ${1} -->
+snippet target "etpl target" w
+<!-- target: ${1:name} -->
+	$0
+<!-- /target -->
 endsnippet
 
-snippet ep "etpl sytax pair" w
-<!-- ${1:syntax}: ${2:name} -->
-${3:content}
-<!-- /$1 -->
+snippet block "etpl block" w
+<!-- block: ${1:name} -->
+	$0
+<!-- /block -->
+endsnippet
+
+snippet import "etpl import" w
+<!-- import: ${1:name} -->$0
+endsnippet
+
+snippet use "etpl use" w
+<!-- use: ${1:target(expression)} -->$0
+endsnippet
+
+snippet var  "etpl var" w
+<!-- var: name = expression -->
+endsnippet
+
+snippet for  "etpl for" w
+<!-- for: \$\{${1:variable}\} as \$\{${2:item}\} -->
+	$0
+<!-- /for -->
+endsnippet
+
+snippet if  "etpl if" w
+<!-- if: \$\{${1:condition}\} -->
+	$0
+<!-- /if -->
+endsnippet
+
+snippet elif  "etpl elif" w
+<!-- elif: \$\{${1:condition}\} -->$0
+endsnippet
+
+snippet else  "etpl else" w
+<!-- else -->
+endsnippet
+
+snippet filter  "etpl filter" w
+<!-- filter: ${1:name(arguments)} -->
+<!-- /filter -->
 endsnippet

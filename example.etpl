@@ -24,3 +24,16 @@ ${test | raw | slice(0, 2) | filter | slice(0, 3)}
 
 <!-- // modeline不能高亮 -->
 <!-- vim: set ft=etpl ts=4 sw=4 sts=4 tw=120 fdm=indent: -->
+
+<!-- target: tes -->
+    ${test}
+<!-- /target -->
+
+<!-- if: ${test.hh} -->
+    hello world!
+<!-- elif: ${test.yy} -->
+    damn it!
+<!-- /if -->
+
+<!-- filter: test -->
+<!-- /filter -->
