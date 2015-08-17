@@ -2,7 +2,9 @@
 
 vim etpl syntax
 
-# snippets
+默认仅支持etpl后缀，目前如果想在其他后缀中使用，可以使用vim的modeline指定为etpl。
+
+## snippets
 
 Make sure you have [SirVer/ultisnips](https://github.com/SirVer/ultisnips) installed.
 
