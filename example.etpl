@@ -8,12 +8,15 @@ ${test}
 
 ${test}
 ${test.property}
+${1 + 1}
+${(1 + 1) * 2 / 3}
 ${test | raw | slice(0, 2) | filter | slice(0, 3)}
 
+test(1231);
 
 <!-- test -->
 
-<!-- use: test(main=${test.property}, 2) -->
+<!-- use: test(main=${test.property + 2}, '123', 2) -->
 
 <!-- for: ${persons} as ${person} -->
     ${person.name}[${person.email}]

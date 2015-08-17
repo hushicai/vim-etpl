@@ -25,16 +25,18 @@ syntax match etplCommandEnd /\/\w\+/ms=s+1 contained nextgroup=etplMarkerEnd
 
 syntax match etplVariable /\${\s*\*\=\s*.\{-}\s*}/ contains=etplVariableInside
 syntax region etplVariableInside start='{'ms=s+1 end='}'me=e-1 contained 
-    \ contains=etplPropertyAccess,etplPipeline,etplFunction
+    \ contains=etplOperator,etplPipeline,etplFunction
 
 syntax match etplPipeline "\s*|\s*" contained
-syntax match etplPropertyAccess "\." contained
+" syntax match etplPropertyAccess "\." contained
+syntax match etplOperator /[\.+*\/()\[\]-]/ contained
 
-syntax match etplFunction /[[:alnum:]_-]\+(.\{-})/  contains=etplFunctionName,etplParameter,etplVariable
+syntax match etplFunction /[[:alnum:]_-]\+(.\{-})/ contained
+    \ contains=etplFunctionName,etplParameter,etplVariable,etplParameterString,etplParameterNumber,etplParameterInside
 syntax match etplFunctionName /[[:alnum:]_-]\+\s*(/me=e-1 contained nextgroup=etplParameter
-" syntax match etplParameter /(.\{-})/ contained contains=etplParameterInside
-" syntax match etplParameterInside /[[:alnum:]_-]\+/ contained
-" syntax match etplOperator /[=,)(]/ contained
+syntax match etplParameterInside /[[:alnum:]_-]\+=/me=e-1 contained
+syntax match etplParameterString /\(['"]\).\{-}\1/ms=s+1,me=e-1 contained
+syntax match etplParameterNumber /[[:digit:]]\+/ contained
 
 syntax match etplComment /<!--\s*\/\/\s*.\{-}\s*-->/ contains=etplCommentText
 syntax region etplCommentText matchgroup=etplCommentText start=/\/\//ms=s+2 end=/-->/me=e-3 contained
@@ -48,8 +50,9 @@ hi def link etplCommand Type
 hi def link etplCommandStart Type
 hi def link etplCommandEnd Type
 hi def link etplFunctionName Special
-" hi def link etplParameter Identifier
-hi def link etplParameterInside Identifier
+hi def link etplParameterInside Constant
+hi def link etplParameterNumber Constant
+hi def link etplParameterString Constant
 hi def link etplComment Comment
 hi def link etplCommentText Todo
 
