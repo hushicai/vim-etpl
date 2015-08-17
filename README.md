@@ -2,7 +2,11 @@
 
 vim etpl syntax
 
-默认仅支持etpl后缀，目前如果想在其他后缀中使用，可以使用vim的modeline指定为etpl。
+默认仅支持`.etpl`后缀，如果你想在其他后缀中使用，很简单，指定一行modeline就行：
+
+```html
+<!-- vim: set ft=etpl ts=4 sw=4 sts=4 tw=120 fdm=indent: -->
+```
 
 ## snippets
 
