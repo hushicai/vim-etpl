@@ -14,13 +14,17 @@ Make sure you have [SirVer/ultisnips](https://github.com/SirVer/ultisnips) insta
 
 ## TODO
 
-* 颜色调整
-* 参数高亮
 * key binding
 * matchit
 * ...
 
 ## 示例
+
+### basic
+
+![](./screenshots/1.png)
+
+### snippets
 
 ![](./screenshots/2.gif)
 

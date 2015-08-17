@@ -12,11 +12,21 @@ ${1 + 1}
 ${(1 + 1) * 2 / 3}
 ${test | raw | slice(0, 2) | filter | slice(0, 3)}
 
+<!-- 左侧变量名和`${xxx}`表达式中的变量同色，定义了变量就是要在大括号中使用 -->
+<!-- var: test = 'hushicai' -->
+<!-- 字符串内部的引号，取最后一个引号 -->
+<!-- var: test2 = 'I\'am hushicai' -->
+<!-- var: test3 = "I\"am hushicai" -->
+<!-- var: test4 = "1 + 1" -->
+<!-- var: test5 = (1 + 1) * 2 / 3 -->
+
 test(1231);
 
-<!-- test -->
+<!-- html原始注释，不高亮，pass -->
 
-<!-- use: test(main=${test.property + 2}, '123', 2) -->
+<!-- use: test(1,2) -->
+
+<!-- use: test(main=${test.property + 2}, 'a\'bc', '123', 2) -->
 
 <!-- for: ${persons} as ${person} -->
     ${person.name}[${person.email}]
@@ -25,18 +35,5 @@ test(1231);
 
 <!-- // 注释 -->
 
-<!-- // modeline不能高亮 -->
+<!-- modeline不高亮，pass -->
 <!-- vim: set ft=etpl ts=4 sw=4 sts=4 tw=120 fdm=indent: -->
-
-<!-- target: tes -->
-    ${test}
-<!-- /target -->
-
-<!-- if: ${test.hh} -->
-    hello world!
-<!-- elif: ${test.yy} -->
-    damn it!
-<!-- /if -->
-
-<!-- filter: test -->
-<!-- /filter -->
