@@ -28,4 +28,6 @@ Make sure you have [SirVer/ultisnips](https://github.com/SirVer/ultisnips) insta
 
 ![](./screenshots/2.gif)
 
+### matchit
 
+![](./screenshots/3.gif)

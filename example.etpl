@@ -3,7 +3,9 @@
 <!-- /target -->
 
 <!-- if: ${test} -->
-${test}
+    test1
+<!-- elif: ${test2} -->
+    test2
 <!-- /if -->
 
 ${test}
