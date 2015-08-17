@@ -6,3 +6,4 @@ let b:did_ftplugin = 1
 
 setlocal omnifunc=htmlcomplete#CompleteTags
 setlocal comments=s:<!--,m:*,e:-->
+setlocal commentstring=<!--%s-->
