@@ -10,7 +10,7 @@ ru! after/syntax/html.vim
 syntax case ignore
 
 " eg: <!-- target: test -->
-syntax match etplDefStart /<!--\s*[[:alnum:]]\+\s*:.\{-}-->/ contains=etplMarkerStart,etplMarkerEnd,etplCommandStart,etplFunction,etplVariable
+syntax match etplDefStart /<!--\s*[[:alnum:]]\+\s*:[^:]\+\s*-->/ contains=etplMarkerStart,etplMarkerEnd,etplCommandStart,etplFunction,etplVariable
 " eg: <!-- /target -->
 syntax match etplDefEnd /<!--\s*\/[[:alnum:]]\+\s*-->/ contains=etplMarkerStart,etplMarkerEnd,etplCommandEnd
 
