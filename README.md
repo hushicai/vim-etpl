@@ -16,4 +16,4 @@ Make sure you have [SirVer/ultisnips](https://github.com/SirVer/ultisnips) insta
 
 ## 示例
 
-![](./screenshot.png)
+![](./screenshots/1.png)
