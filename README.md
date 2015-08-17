@@ -14,7 +14,7 @@ Make sure you have [SirVer/ultisnips](https://github.com/SirVer/ultisnips) insta
 
 ## TODO
 
-* key binding
+* key binding，command和variable可配置
 * ...
 
 ## 示例
