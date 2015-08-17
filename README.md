@@ -15,7 +15,6 @@ Make sure you have [SirVer/ultisnips](https://github.com/SirVer/ultisnips) insta
 ## TODO
 
 * key binding
-* matchit
 * ...
 
 ## 示例
