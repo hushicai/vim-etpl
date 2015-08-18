@@ -10,7 +10,7 @@ ru! after/syntax/html.vim
 syntax case ignore
 
 " eg: <!-- target: test -->
-exec 'syntax match etplDefStart /' . g:etpl_command_open . '\s*[[:alnum:]]\+\s*:[^:]\+\s*' . g:etpl_command_close . '/ '
+exec 'syntax match etplDefStart /' . g:etpl_command_open . '\s*[[:alnum:]]\+\s*:.\{-}\s*' . g:etpl_command_close . '/ '
     \ . 'contains=etplMarkerStart,etplMarkerEnd,etplCommandStart,etplFunction,etplExpression,'
     \ . 'etplSingleString,etplDoubleString,etplNumber,etplVariable'
 " eg: <!-- /target -->
@@ -51,16 +51,21 @@ hi def link etplMarkerStart Underlined
 hi def link etplMarkerEnd Underlined
 hi def link etplExpression Underlined
 hi def link etplPipeline Underlined
+
 hi def link etplExpressionInside Statement
 hi def link etplVariable Statement
+
 hi def link etplCommand Type
 hi def link etplCommandStart Type
 hi def link etplCommandEnd Type
+
 hi def link etplFunctionName Special
+
 hi def link etplParameterInside Constant
 hi def link etplNumber Constant
 hi def link etplSingleString Constant
 hi def link etplDoubleString Constant
+
 hi def link etplComment Comment
 hi def link etplCommentText Todo
 
