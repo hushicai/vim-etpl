@@ -6,13 +6,20 @@
     test2
 <!-- /if -->
 
-${test}
+<!-- if: ${test} -->
+    ${test}
+<!-- /if -->
+
 
 ${test}
 ${test.property}
 ${1 + 1}
 ${(1 + 1) * 2 / 3}
 ${test | raw | slice(0, 2) | filter | slice(0, 3)}
+<!-- 嵌套的variable -->
+${test | comma(3)}
+${test | comma(${commaLength})}
+${test | comma(${commaLength} + 1)}
 
 <!-- 左侧变量名和`${xxx}`表达式中的变量同色，定义了变量就是要在大括号中使用 -->
 <!-- var: test = 'hushicai' -->

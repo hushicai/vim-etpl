@@ -15,7 +15,7 @@ endif
 if !exists('g:etpl_variable_open')
     let g:etpl_variable_open='${'
 endif
-let g:etpl_variable_open=substitute(g:etpl_variable_open, '[\$]', '\\\0', 'g')
+" let g:etpl_variable_open=substitute(g:etpl_variable_open, '[\$]', '\\\0', 'g')
 
 if !exists('g:etpl_variable_close')
     let g:etpl_variable_close='}'

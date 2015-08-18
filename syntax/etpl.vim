@@ -9,6 +9,9 @@ ru! after/syntax/html.vim
 
 syntax case ignore
 
+" 转义一下
+let s:etpl_variable_open_escaped=substitute(g:etpl_variable_open, '[\$]', '\\\0', 'g')
+
 " eg: <!-- target: test -->
 exec 'syntax match etplDefStart /' . g:etpl_command_open . '\s*[[:alnum:]]\+\s*:.\{-}\s*' . g:etpl_command_close . '/ '
     \ . 'contains=etplMarkerStart,etplMarkerEnd,etplCommandStart,etplFunction,etplExpression,'
@@ -27,8 +30,8 @@ syntax match etplCommandStart /[[:alnum:]]\+\s*:/me=e-1 contained nextgroup=etpl
 syntax match etplCommandEnd /\/[[:alnum:]]\+/ms=s+1 contained nextgroup=etplMarkerEnd
 
 " eg: ${person.name}
-exec 'syntax match etplExpression /\(' . g:etpl_variable_open . '\)\s*\*\=\s*.\{-}\s*\(' . g:etpl_variable_close . '\)/ contains=etplExpressionInside'
-exec 'syntax region etplExpressionInside start=/\(' . g:etpl_variable_open . '\)\@<=/ end=/\(' . g:etpl_variable_close . '\)\@=/ contained '
+exec 'syntax match etplExpression /\(' . s:etpl_variable_open_escaped . '\)\s*\*\=\s*.\{-}\s*\(' . g:etpl_variable_close . '\)/ contains=etplExpressionInside'
+exec 'syntax region etplExpressionInside start=/\(' . s:etpl_variable_open_escaped . '\)\@<=/ end=/\(' . g:etpl_variable_close . '\)\@=/ contained '
             \ . 'contains=etplOperator,etplPipeline,etplFunction'
 
 syntax match etplPipeline "\s*|\s*" contained
@@ -38,10 +41,11 @@ syntax match etplFunction /[[:alnum:]_-]\+(.\{-})/ contained
     \ contains=etplFunctionName,etplParameter,etplExpression,etplSingleString,etplDoubleString,etplNumber,etplParameterInside
 syntax match etplFunctionName /[[:alnum:]_-]\+\s*(/me=e-1 contained nextgroup=etplParameter
 syntax match etplParameterInside /[[:alnum:]_-]\+\s*=/me=e-1 contained
+
 syntax match etplNumber /[[:digit:]]\+/ contained
-" syntax match etplString /\(['"]\).\{-}\1/ contained
 syntax region etplSingleString start=/'/ms=s+1 skip=/\\'/ end=/'/me=e-1 contained oneline
 syntax region etplDoubleString start=/"/ms=s+1 skip=/\\"/ end=/"/me=e-1 contained oneline
+
 syntax match etplVariable /[[:alnum:]_-]\+\s*=/me=e-1 contained
 
 exec 'syntax match etplComment /\(' .g:etpl_command_open . '\)\s*\/\/\s*.\{-}\s*' . g:etpl_command_close . '/ contains=etplCommentText'
