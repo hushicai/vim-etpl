@@ -13,9 +13,10 @@ syntax case ignore
 let s:etpl_variable_open_escaped=substitute(g:etpl_variable_open, '[\$]', '\\\0', 'g')
 
 " eg: <!-- target: test -->
-exec 'syntax match etplDefStart /' . g:etpl_command_open . '\s*[[:alnum:]]\+\s*:.\{-}\s*' . g:etpl_command_close . '/ '
+exec 'syntax match etplDefStart /' . g:etpl_command_open . '\s*\(vim\)\@![[:alnum:]]\+\s*:.\{-}\s*' . g:etpl_command_close . '/ '
     \ . 'contains=etplMarkerStart,etplMarkerEnd,etplCommandStart,etplFunction,etplExpression,'
     \ . 'etplSingleString,etplDoubleString,etplNumber,etplVariable'
+
 " eg: <!-- /target -->
 exec 'syntax match etplDefEnd /\(' . g:etpl_command_open . '\)\s*\/[[:alnum:]]\+\s*\(' . g:etpl_command_close . '\)/ '
     \ . 'contains=etplMarkerStart,etplMarkerEnd,etplCommandEnd'

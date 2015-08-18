@@ -16,7 +16,7 @@ ${test.property}
 ${1 + 1}
 ${(1 + 1) * 2 / 3}
 ${test | raw | slice(0, 2) | filter | slice(0, 3)}
-<!-- 嵌套的variable -->
+<!-- 嵌套的variable，怎么整？ -->
 ${test | comma(3)}
 ${test | comma(${commaLength})}
 ${test | comma(${commaLength} + 1)}
