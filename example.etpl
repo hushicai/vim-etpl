@@ -9,6 +9,8 @@
 <!-- /if -->
 
 ${test}
+
+${test}
 ${test.property}
 ${1 + 1}
 ${(1 + 1) * 2 / 3}
@@ -39,3 +41,5 @@ test(1231);
 
 <!-- modeline不高亮，pass -->
 <!-- vim: set ft=etpl ts=4 sw=4 sts=4 tw=120 fdm=indent: -->
+
+{test}

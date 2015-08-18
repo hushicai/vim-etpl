@@ -10,28 +10,28 @@ ru! after/syntax/html.vim
 syntax case ignore
 
 " eg: <!-- target: test -->
-syntax match etplDefStart /<!--\s*[[:alnum:]]\+\s*:[^:]\+\s*-->/
-    \ contains=etplMarkerStart,etplMarkerEnd,etplCommandStart,etplFunction,etplExpression,
-            \ etplSingleString,etplDoubleString,etplNumber,etplVariable
+exec 'syntax match etplDefStart /' . g:etpl_command_open . '\s*[[:alnum:]]\+\s*:[^:]\+\s*' . g:etpl_command_close . '/ '
+    \ . 'contains=etplMarkerStart,etplMarkerEnd,etplCommandStart,etplFunction,etplExpression,'
+    \ . 'etplSingleString,etplDoubleString,etplNumber,etplVariable'
 " eg: <!-- /target -->
-syntax match etplDefEnd /<!--\s*\/[[:alnum:]]\+\s*-->/ contains=etplMarkerStart,etplMarkerEnd,etplCommandEnd
+exec 'syntax match etplDefEnd /\(' . g:etpl_command_open . '\)\s*\/[[:alnum:]]\+\s*\(' . g:etpl_command_close . '\)/ '
+    \ . 'contains=etplMarkerStart,etplMarkerEnd,etplCommandEnd'
 
 " etpl marker
-syntax match etplMarkerStart /<!--/ contained nextgroup=etplCommandStart,etplCommandEnd
-syntax match etplMarkerEnd /-->/ contained
+exec 'syntax match etplMarkerStart /\(' . g:etpl_command_open . '\)/ contained nextgroup=etplCommandStart,etplCommandEnd'
+exec 'syntax match etplMarkerEnd /\(' . g:etpl_command_close . '\)/ contained'
 
 " eg: <!-- target: test -->
-syntax match etplCommandStart /\w\+\s*:/me=e-1 contained nextgroup=etplMarkerEnd
+syntax match etplCommandStart /[[:alnum:]]\+\s*:/me=e-1 contained nextgroup=etplMarkerEnd
 " eg: <!-- /target -->
-syntax match etplCommandEnd /\/\w\+/ms=s+1 contained nextgroup=etplMarkerEnd
+syntax match etplCommandEnd /\/[[:alnum:]]\+/ms=s+1 contained nextgroup=etplMarkerEnd
 
 " eg: ${person.name}
-syntax match etplExpression /\${\s*\*\=\s*.\{-}\s*}/ contains=etplExpressionInside
-syntax region etplExpressionInside start='{'ms=s+1 end='}'me=e-1 contained 
-    \ contains=etplOperator,etplPipeline,etplFunction
+exec 'syntax match etplExpression /\(' . g:etpl_variable_open . '\)\s*\*\=\s*.\{-}\s*\(' . g:etpl_variable_close . '\)/ contains=etplExpressionInside'
+exec 'syntax region etplExpressionInside start=/\(' . g:etpl_variable_open . '\)\@<=/ end=/\(' . g:etpl_variable_close . '\)\@=/ contained '
+            \ . 'contains=etplOperator,etplPipeline,etplFunction'
 
 syntax match etplPipeline "\s*|\s*" contained
-" syntax match etplPropertyAccess "\." contained
 syntax match etplOperator /[\.+*\/()\[\]-]/ contained
 
 syntax match etplFunction /[[:alnum:]_-]\+(.\{-})/ contained
@@ -44,7 +44,7 @@ syntax region etplSingleString start=/'/ms=s+1 skip=/\\'/ end=/'/me=e-1 containe
 syntax region etplDoubleString start=/"/ms=s+1 skip=/\\"/ end=/"/me=e-1 contained oneline
 syntax match etplVariable /[[:alnum:]_-]\+\s*=/me=e-1 contained
 
-syntax match etplComment /<!--\s*\/\/\s*.\{-}\s*-->/ contains=etplCommentText
+exec 'syntax match etplComment /\(' .g:etpl_command_open . '\)\s*\/\/\s*.\{-}\s*' . g:etpl_command_close . '/ contains=etplCommentText'
 syntax region etplCommentText matchgroup=etplCommentText start=/\/\//ms=s+2 end=/-->/me=e-3 contained
 
 hi def link etplMarkerStart Underlined

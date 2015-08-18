@@ -5,54 +5,58 @@ priority -50
 extends html
 
 snippet comment "etpl comment" w
-<!-- // ${1:comment...} -->$0
+`!v g:etpl_command_open` // ${1:comment...} `!v g:etpl_command_close`$0
 endsnippet
 
 snippet target "etpl target" w
-<!-- target: ${1:name} -->
+`!v g:etpl_command_open` target: ${1:name} `!v g:etpl_command_close`
 	$0
-<!-- /target -->
+`!v g:etpl_command_open` /target `!v g:etpl_command_close`
 endsnippet
 
 snippet block "etpl block" w
-<!-- block: ${1:name} -->
+`!v g:etpl_command_open` block: ${1:name} `!v g:etpl_command_close`
 	$0
-<!-- /block -->
+`!v g:etpl_command_open` /block `!v g:etpl_command_close`
 endsnippet
 
 snippet import "etpl import" w
-<!-- import: ${1:name} -->$0
+`!v g:etpl_command_open` import: ${1:name} `!v g:etpl_command_close`$0
 endsnippet
 
 snippet use "etpl use" w
-<!-- use: ${1:target(expression)} -->$0
+`!v g:etpl_command_open` use: ${1:target(expression)} `!v g:etpl_command_close`$0
 endsnippet
 
 snippet var  "etpl var" w
-<!-- var: ${1:name} = ${2:expression} -->$0
+`!v g:etpl_command_open` var: ${1:name} = ${2:expression} `!v g:etpl_command_close`$0
 endsnippet
 
 snippet for  "etpl for" w
-<!-- for: \$\{${1:variable}\} as \$\{${2:item}\} -->
+`!v g:etpl_command_open` for: `!v g:etpl_variable_open`${1:variable}`!v g:etpl_variable_close` as \$\{${2:item}\} `!v g:etpl_command_close`
 	$0
-<!-- /for -->
+`!v g:etpl_command_open` /for `!v g:etpl_command_close`
 endsnippet
 
 snippet if  "etpl if" w
-<!-- if: \$\{${1:condition}\} -->
+`!v g:etpl_command_open` if: `!v g:etpl_variable_open`${1:condition}`!v g:etpl_variable_close` `!v g:etpl_command_close`
 	$0
-<!-- /if -->
+`!v g:etpl_command_open` /if `!v g:etpl_command_close`
 endsnippet
 
 snippet elif  "etpl elif" w
-<!-- elif: \$\{${1:condition}\} -->$0
+`!v g:etpl_command_open` elif: `!v g:etpl_variable_open`${1:condition}`!v g:etpl_variable_close` `!v g:etpl_command_close`$0
 endsnippet
 
 snippet else  "etpl else" w
-<!-- else -->
+`!v g:etpl_command_open` else `!v g:etpl_command_close`
 endsnippet
 
 snippet filter  "etpl filter" w
-<!-- filter: ${1:name(arguments)} -->
-<!-- /filter -->
+`!v g:etpl_command_open` filter: ${1:name(arguments)} `!v g:etpl_command_close`
+`!v g:etpl_command_open` /filter `!v g:etpl_command_close`
+endsnippet
+
+snippet expr "etpl expr, eg: ${expr}" w
+`!v g:etpl_variable_open`${1:expr}`!v g:etpl_variable_close`
 endsnippet
