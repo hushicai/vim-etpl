@@ -13,7 +13,7 @@ vim etpl syntax
 
 ## customize
 
-可以通过配置以下选项改变etpl的法起始串和结束串，比如类似mustache：
+可以通过配置以下选项改变etpl的起始串和结束串，比如类似mustache：
 
 ```viml
 " 默认为`<!--`
